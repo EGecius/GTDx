@@ -21,7 +21,7 @@ import java.util.Map;
 
 import rx.Subscriber;
 
-public class MainActivity extends AppCompatActivity {
+public class ListActivity extends AppCompatActivity {
 
 	private DatabaseExploration databaseExploration = new DatabaseExploration();
 
