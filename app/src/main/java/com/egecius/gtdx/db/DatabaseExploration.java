@@ -11,7 +11,7 @@ import com.google.firebase.database.ValueEventListener;
 /**
  * Top abstraction level for my database
  */
-// TODO: 05/02/2017 to be removed later 
+// TODO: 05/02/2017 to be removed later
 public final class DatabaseExploration {
 
 	private static final String KEY_MESSAGE = "message";

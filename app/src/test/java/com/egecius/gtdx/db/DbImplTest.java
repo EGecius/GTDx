@@ -4,10 +4,13 @@ package com.egecius.gtdx.db;
 import com.egecius.gtdx.datatypes.TodoTask;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
@@ -24,6 +27,7 @@ public class DbImplTest {
 	public static final String KEY_PUSH_TASK = "key_push_task";
 	private static final String TASK_TITLE_0 = "task_title_0";
 	private static final String TASK_ID_0 = "task_id_0";
+	public static final String JSON_RECEIVED_FROM_FIREBASE = "json_received_from_firebase";
 
 	TodoTask task0 = new TodoTask(TASK_ID_0, TASK_TITLE_0);
 
@@ -32,12 +36,14 @@ public class DbImplTest {
 	@Mock DatabaseReference dbRefTasks;
 	@Mock DatabaseReference dbRefTasksChild0;
 
+	@Captor ArgumentCaptor<ValueEventListener> captorValueEventListener;
 
 	Db db;
 
 	@Before
+
 	public void setup() {
-		
+
 		given(firebaseDb.getReference()).willReturn(dbRefRoot);
 		given(dbRefRoot.child(TASKS)).willReturn(dbRefTasks);
 
