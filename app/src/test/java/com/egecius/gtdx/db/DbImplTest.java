@@ -12,7 +12,6 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.BDDMockito.given;
-import static org.mockito.Matchers.anyMap;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -21,26 +20,30 @@ import static org.mockito.Mockito.verify;
 @RunWith (MockitoJUnitRunner.class)
 public class DbImplTest {
 
-	public static final String TASKS = "tasks";
+	private static final String TASKS = "tasks";
 	public static final String KEY_PUSH_TASK = "key_push_task";
-	Db db;
+	private static final String TASK_TITLE_0 = "task_title_0";
+	private static final String TASK_ID_0 = "task_id_0";
+
+	TodoTask task0 = new TodoTask(TASK_ID_0, TASK_TITLE_0);
 
 	@Mock FirebaseDatabase firebaseDb;
 	@Mock DatabaseReference dbRefRoot;
 	@Mock DatabaseReference dbRefTasks;
-	@Mock DatabaseReference dbRefTasksPush;
+	@Mock DatabaseReference dbRefTasksChild0;
 
-	TodoTask task0 = new TodoTask();
+
+	Db db;
 
 	@Before
 	public void setup() {
 		
 		given(firebaseDb.getReference()).willReturn(dbRefRoot);
 		given(dbRefRoot.child(TASKS)).willReturn(dbRefTasks);
-		given(dbRefTasks.push()).willReturn(dbRefTasksPush);
-		given(dbRefTasksPush.getKey()).willReturn(KEY_PUSH_TASK);
 
 		db = new DbImpl(firebaseDb);
+
+		given(dbRefTasks.child(TASK_ID_0)).willReturn(dbRefTasksChild0);
 	}
 
 	@Test
@@ -48,8 +51,8 @@ public class DbImplTest {
 		//WHEN
 		db.addTask(task0);
 		//THEN
-		// TODO: 05/02/2017 ideally I would be more specific here
-		verify(dbRefRoot).updateChildren(anyMap());
+		verify(dbRefTasks).child(TASK_ID_0);
+		verify(dbRefTasksChild0).setValue(task0);
 	}
 
 }

@@ -20,23 +20,19 @@ public final class DbImpl implements Db {
 	private static final String TASKS = "tasks";
 
 	private final DatabaseReference dbRefRoot;
+	private DatabaseReference tasksRef;
 
 	public DbImpl(final FirebaseDatabase firebaseDatabase) {
 		dbRefRoot = firebaseDatabase.getReference();
+		tasksRef = dbRefRoot.child(TASKS);
 	}
 
 	@Override
 	public void addTask(final TodoTask task) {
 
-		String key = dbRefRoot.child(TASKS).push().getKey();
-		Map<String, Object> postValues = task.toMap();
+		tasksRef.child(task.getId()).setValue(task);
 
-		Map<String, Object> childUpdates = new HashMap<>();
-		childUpdates.put("/" + TASKS + "/" + key, postValues);
-
-		dbRefRoot.updateChildren(childUpdates);
-
-		dbRefRoot.addValueEventListener(new ValueEventListener() {
+		tasksRef.addValueEventListener(new ValueEventListener() {
 			@Override
 			public void onDataChange(final DataSnapshot dataSnapshot) {
 				Log.i("Eg:DbImpl:48", "onDataChange dataSnapshot.getValue() " + dataSnapshot.getValue());
