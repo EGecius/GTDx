@@ -29,7 +29,7 @@ public class DbImplTest {
 	private static final String TASK_ID_0 = "task_id_0";
 	public static final String JSON_RECEIVED_FROM_FIREBASE = "json_received_from_firebase";
 
-	TodoTask task0 = new TodoTask(TASK_ID_0, TASK_TITLE_0);
+	TodoTask task0 = new TodoTask(TASK_TITLE_0);
 
 	@Mock FirebaseDatabase firebaseDb;
 	@Mock DatabaseReference dbRefRoot;
