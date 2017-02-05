@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "62020900489",
+    "firebase_url": "https://gtdx-81d18.firebaseio.com",
+    "project_id": "gtdx-81d18",
+    "storage_bucket": "gtdx-81d18.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:62020900489:android:1c780ad9973ef716",
+        "android_client_info": {
+          "package_name": "com.egecius.gtdx"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "62020900489-qq0j0t6cium7pb5hpah3u8f7n93q7ind.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAa0D8qeWqOXUd4WFu0XId8ybZMQVnrS4Q"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
