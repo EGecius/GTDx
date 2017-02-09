@@ -6,7 +6,7 @@ import android.support.annotation.Nullable;
 /**
  * Represents a task in a to-do list
  */
-public final class TodoTask {
+public final class TodoTask implements Comparable<TodoTask> {
 
 	/** Unix timestamp */
 	@NonNull String title;
@@ -32,9 +32,9 @@ public final class TodoTask {
 		// Default constructor required for calls to DataSnapshot.getValue(TodoTask.class)
 	}
 
-	public TodoTask(final String title) {
-		timestamp = System.currentTimeMillis();
+	public TodoTask(final String title, Long timestamp) {
 		this.title = title;
+		this.timestamp = timestamp;
 	}
 
 	public TodoTask(@NonNull final String title, @NonNull final Long timestamp, final String context, final Long dueDate, final Integer repeatDays, final Long lenghtInMins, @NonNull final Integer priority, final String note, final Boolean isDone, final Boolean isStared) {
@@ -114,5 +114,63 @@ public final class TodoTask {
 				", isDone=" + isDone +
 				", isStared=" + isStared +
 				'}';
+	}
+
+	@Override
+	public int compareTo(@NonNull final TodoTask other) {
+
+		if (timestamp < other.timestamp) {
+			return -1;
+		} else if (timestamp > other.timestamp) {
+			return 1;
+		}
+
+		return 0;
+	}
+
+	@Override
+	public boolean equals(final Object o) {
+		if (this == o)
+			return true;
+		if (!(o instanceof TodoTask))
+			return false;
+
+		final TodoTask todoTask = (TodoTask) o;
+
+		if (!title.equals(todoTask.title))
+			return false;
+		if (!timestamp.equals(todoTask.timestamp))
+			return false;
+		if (context != null ? !context.equals(todoTask.context) : todoTask.context != null)
+			return false;
+		if (dueDate != null ? !dueDate.equals(todoTask.dueDate) : todoTask.dueDate != null)
+			return false;
+		if (repeatDays != null ? !repeatDays.equals(todoTask.repeatDays) : todoTask.repeatDays != null)
+			return false;
+		if (lenghtInMins != null ? !lenghtInMins.equals(todoTask.lenghtInMins) : todoTask.lenghtInMins != null)
+			return false;
+		if (!priority.equals(todoTask.priority))
+			return false;
+		if (note != null ? !note.equals(todoTask.note) : todoTask.note != null)
+			return false;
+		if (isDone != null ? !isDone.equals(todoTask.isDone) : todoTask.isDone != null)
+			return false;
+		return isStared != null ? isStared.equals(todoTask.isStared) : todoTask.isStared == null;
+
+	}
+
+	@Override
+	public int hashCode() {
+		int result = title.hashCode();
+		result = 31 * result + timestamp.hashCode();
+		result = 31 * result + (context != null ? context.hashCode() : 0);
+		result = 31 * result + (dueDate != null ? dueDate.hashCode() : 0);
+		result = 31 * result + (repeatDays != null ? repeatDays.hashCode() : 0);
+		result = 31 * result + (lenghtInMins != null ? lenghtInMins.hashCode() : 0);
+		result = 31 * result + priority.hashCode();
+		result = 31 * result + (note != null ? note.hashCode() : 0);
+		result = 31 * result + (isDone != null ? isDone.hashCode() : 0);
+		result = 31 * result + (isStared != null ? isStared.hashCode() : 0);
+		return result;
 	}
 }
