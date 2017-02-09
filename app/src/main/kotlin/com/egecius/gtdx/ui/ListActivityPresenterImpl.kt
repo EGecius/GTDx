@@ -1,20 +1,20 @@
 package com.egecius.gtdx.ui
 
 import com.egecius.gtdx.datatypes.TodoTask
-import com.egecius.gtdx.db.DbImpl
-import com.google.firebase.database.FirebaseDatabase
+import com.egecius.gtdx.db.Db
 import java.util.*
 
-internal class ListActivityPresenterImpl(private val listActivity: ListActivityView) : ListActivityPresenter {
-
-    private val db = DbImpl(FirebaseDatabase.getInstance())
+internal class ListActivityPresenterImpl(private val view: ListActivityView, val db: Db) : ListActivityPresenter {
 
     override fun onCreate() {
         observeTasksInCloudDatabase()
+        view.showProgressBar()
     }
 
     private fun observeTasksInCloudDatabase() {
-        db.allTasks.subscribe { map -> updateTasks(map) }
+        db.allTasks.subscribe { map ->
+            view.hideProgressBar()
+            updateTasks(map) }
     }
 
     override fun onNewTaskAdded(taskTitle: String) {
@@ -28,7 +28,7 @@ internal class ListActivityPresenterImpl(private val listActivity: ListActivityV
 
     private fun updateTasks(map: Map<String, Map<*, *>>) {
         val list = extractToTaskList(map)
-        listActivity.onTasksUpdated(list)
+        view.onTasksUpdated(list)
     }
 
     private fun extractToTaskList(map: Map<String, Map<*, *>>): List<TodoTask> {
