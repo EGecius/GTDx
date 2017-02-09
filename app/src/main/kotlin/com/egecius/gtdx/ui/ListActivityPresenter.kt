@@ -1,4 +1,4 @@
-package com.egecius.gtdx
+package com.egecius.gtdx.ui
 
 internal interface ListActivityPresenter {
 

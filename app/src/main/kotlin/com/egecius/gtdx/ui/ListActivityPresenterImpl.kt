@@ -1,13 +1,9 @@
-package com.egecius.gtdx
+package com.egecius.gtdx.ui
 
 import com.egecius.gtdx.datatypes.TodoTask
-import com.egecius.gtdx.db.Db
 import com.egecius.gtdx.db.DbImpl
 import com.google.firebase.database.FirebaseDatabase
-
-import java.util.ArrayList
-
-import rx.functions.Action1
+import java.util.*
 
 internal class ListActivityPresenterImpl(private val listActivity: ListActivityView) : ListActivityPresenter {
 
