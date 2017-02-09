@@ -15,6 +15,8 @@ import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 
 import static org.mockito.BDDMockito.given;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.verify;
 
 /**
@@ -32,9 +34,9 @@ public class DbImplTest {
 	TodoTask task0 = new TodoTask(TASK_TITLE_0);
 
 	@Mock FirebaseDatabase firebaseDb;
-	@Mock DatabaseReference dbRefRoot;
-	@Mock DatabaseReference dbRefTasks;
-	@Mock DatabaseReference dbRefTasksChild0;
+	@Mock DatabaseReference refRoot;
+	@Mock DatabaseReference refTasks;
+	@Mock DatabaseReference refSingleTask;
 
 	@Captor ArgumentCaptor<ValueEventListener> captorValueEventListener;
 
@@ -44,12 +46,11 @@ public class DbImplTest {
 
 	public void setup() {
 
-		given(firebaseDb.getReference()).willReturn(dbRefRoot);
-		given(dbRefRoot.child(TASKS)).willReturn(dbRefTasks);
+		given(firebaseDb.getReference()).willReturn(refRoot);
+		given(refRoot.child(TASKS)).willReturn(refTasks);
+		given(refTasks.child(anyString())).willReturn(refSingleTask);
 
 		db = new DbImpl(firebaseDb);
-
-		given(dbRefTasks.child(TASK_ID_0)).willReturn(dbRefTasksChild0);
 	}
 
 	@Test
@@ -57,8 +58,7 @@ public class DbImplTest {
 		//WHEN
 		db.addTask(task0);
 		//THEN
-		verify(dbRefTasks).child(TASK_ID_0);
-		verify(dbRefTasksChild0).setValue(task0);
+		verify(refSingleTask).setValue(task0);
 	}
 
 }

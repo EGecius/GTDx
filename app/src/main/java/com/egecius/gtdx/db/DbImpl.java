@@ -22,17 +22,17 @@ public final class DbImpl implements Db {
 	/** last id used for a task */
 	private static final String LAST_ID = "last_id";
 
-	private final DatabaseReference dbRefRoot;
-	private final DatabaseReference tasksRef;
+	private final DatabaseReference refRoot;
+	private final DatabaseReference refTasks;
 
 	public DbImpl(final FirebaseDatabase firebaseDatabase) {
-		dbRefRoot = firebaseDatabase.getReference();
-		tasksRef = dbRefRoot.child(TASKS);
+		refRoot = firebaseDatabase.getReference();
+		refTasks = refRoot.child(TASKS);
 	}
 
 	@Override
 	public void addTask(final TodoTask task) {
-		tasksRef.child(createId()).setValue(task);
+		refTasks.child(createId()).setValue(task);
 	}
 
 	private String createId() {
@@ -44,7 +44,7 @@ public final class DbImpl implements Db {
 		return Observable.create(new Observable.OnSubscribe<Map<String, Map>>() {
 			@Override
 			public void call(final Subscriber<? super Map<String, Map>> subscriber) {
-				tasksRef.addValueEventListener(new ValueEventListener() {
+				refTasks.addValueEventListener(new ValueEventListener() {
 					@Override
 					public void onDataChange(final DataSnapshot dataSnapshot) {
 						//noinspection unchecked
