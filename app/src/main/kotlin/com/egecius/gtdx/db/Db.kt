@@ -1,11 +1,10 @@
 package com.egecius.gtdx.db
 
-import com.egecius.gtdx.datatypes.TodoTask
 import rx.Observable
 
 /**
-* Highest abstraction level to database
-*/
+ * Highest abstraction level to database
+ */
 interface Db {
 
     /** Adds a task to database  */
@@ -13,4 +12,9 @@ interface Db {
 
     /** Returns all tasks from the database  */
     val getAllTasks: Observable<Map<String, Map<*, *>>>
+
+    /**
+     * @param id id of the task to be removed
+     */
+    fun removeTask(id: String)
 }

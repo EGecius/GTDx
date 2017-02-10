@@ -24,7 +24,7 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
     }
 
     override fun onRemoveTaskClicked(id: String) {
-        // TODO: 10/02/2017  
+        db.removeTask(id)
     }
 
     private fun addTaskToDb(taskTitle: String) {

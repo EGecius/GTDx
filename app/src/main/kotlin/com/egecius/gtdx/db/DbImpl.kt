@@ -46,10 +46,11 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
             })
         }
 
-    companion object {
+    override fun removeTask(id: String) {
+        refTasks.child(id).removeValue()
+    }
 
+    companion object {
         private val TASKS = "tasks"
-        /** last id used for a task  */
-        private val LAST_ID = "last_id"
     }
 }
