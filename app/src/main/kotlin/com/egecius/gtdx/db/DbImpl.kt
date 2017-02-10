@@ -23,8 +23,9 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
         refTasks = refRoot.child(TASKS)
     }
 
-    override fun addTask(task: TodoTask) {
-        refTasks.child(createId()).setValue(task)
+    override fun addTask(taskTitle: String) {
+        val task = TodoTask(createId(), taskTitle, System.currentTimeMillis())
+        refTasks.child(task.id).setValue(task)
     }
 
     private fun createId(): String {

@@ -20,10 +20,10 @@ class SorterImplTest {
     fun sortsTasksFromNewestToOldest() {
 
         //create tasks
-        val todoTask0 = TodoTask("task0", 1)
-        val todoTask1 = TodoTask("task1", 2)
-        val todoTask2 = TodoTask("task2", 3)
-        val todoTask3 = TodoTask("task3", 4)
+        val todoTask0 = TodoTask("id0", "task0", 1)
+        val todoTask1 = TodoTask("id1", "task1", 2)
+        val todoTask2 = TodoTask("id2", "task2", 3)
+        val todoTask3 = TodoTask("id3", "task3", 4)
 
         //add to list
         val unsorted = ArrayList<TodoTask>()

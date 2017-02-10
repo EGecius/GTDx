@@ -23,8 +23,7 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
     }
 
     private fun addTaskToDb(taskTitle: String) {
-        val taskToAdd = TodoTask(taskTitle, System.currentTimeMillis())
-        db.addTask(taskToAdd)
+        db.addTask(taskTitle)
     }
 
     private fun updateTasks(map: Map<String, Map<*, *>>) {
@@ -42,9 +41,10 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
         val list = ArrayList<TodoTask>()
 
         for ((key, taskMap) in map) {
+            val id = taskMap["id"] as String
             val title = taskMap["title"] as String
             val timestamp = taskMap["timestamp"] as Long
-            val todoTask = TodoTask(title, timestamp)
+            val todoTask = TodoTask(id, title, timestamp)
             list.add(todoTask)
         }
 

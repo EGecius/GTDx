@@ -9,7 +9,7 @@ import rx.Observable
 interface Db {
 
     /** Adds a task to database  */
-    fun addTask(task: TodoTask)
+    fun addTask(taskTitle: String)
 
     /** Returns all tasks from the database  */
     val getAllTasks: Observable<Map<String, Map<*, *>>>

@@ -8,6 +8,8 @@ import android.support.annotation.Nullable;
  */
 public final class TodoTask implements Comparable<TodoTask> {
 
+	/** Task id */
+	@NonNull String id;
 	/** Unix timestamp */
 	@NonNull String title;
 	/** Unix time of creation */
@@ -32,12 +34,15 @@ public final class TodoTask implements Comparable<TodoTask> {
 		// Default constructor required for calls to DataSnapshot.getValue(TodoTask.class)
 	}
 
-	public TodoTask(final String title, Long timestamp) {
+	public TodoTask(String id, final String title, Long timestamp) {
+		this.id = id;
 		this.title = title;
 		this.timestamp = timestamp;
 	}
 
-	public TodoTask(@NonNull final String title, @NonNull final Long timestamp, final String context, final Long dueDate, final Integer repeatDays, final Long lenghtInMins, @NonNull final Integer priority, final String note, final Boolean isDone, final Boolean isStared) {
+	public TodoTask(@NonNull String id, @NonNull final String title, @NonNull final Long timestamp, final String context, final
+	Long dueDate, final Integer repeatDays, final Long lenghtInMins, @NonNull final Integer priority, final String note, final Boolean isDone, final Boolean isStared) {
+		this.id = id;
 		this.title = title;
 		this.timestamp = timestamp;
 		this.context = context;
@@ -48,6 +53,11 @@ public final class TodoTask implements Comparable<TodoTask> {
 		this.note = note;
 		this.isDone = isDone;
 		this.isStared = isStared;
+	}
+
+	@NonNull
+	public String getId() {
+		return id;
 	}
 
 	@NonNull
