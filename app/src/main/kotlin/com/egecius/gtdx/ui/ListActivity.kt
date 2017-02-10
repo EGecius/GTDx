@@ -24,7 +24,7 @@ class ListActivity : AppCompatActivity(), ListActivityView {
 
     private val adapter: RecyclerViewAdapter = RecyclerViewAdapter()
 
-    private val presenter = ListActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
+    private val presenter: ListActivityPresenter = ListActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,8 +48,9 @@ class ListActivity : AppCompatActivity(), ListActivityView {
     }
 
     private fun setRecyclerView() {
-        tasksRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        adapter.setRemoveTaskCallback({ id -> presenter.onRemoveTaskClicked(id) })
         tasksRecyclerView.adapter = adapter
+        tasksRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
     }
 
     private fun setupAddButton() {

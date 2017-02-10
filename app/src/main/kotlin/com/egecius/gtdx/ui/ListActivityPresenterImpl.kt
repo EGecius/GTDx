@@ -1,5 +1,6 @@
 package com.egecius.gtdx.ui
 
+import android.util.Log
 import com.egecius.gtdx.datatypes.TodoTask
 import com.egecius.gtdx.db.Db
 import com.egecius.gtdx.utils.SorterImpl
@@ -20,6 +21,10 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
 
     override fun onNewTaskAdded(taskTitle: String) {
         addTaskToDb(taskTitle)
+    }
+
+    override fun onRemoveTaskClicked(id: String) {
+        // TODO: 10/02/2017  
     }
 
     private fun addTaskToDb(taskTitle: String) {
