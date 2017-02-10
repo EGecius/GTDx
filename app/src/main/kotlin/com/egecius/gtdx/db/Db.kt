@@ -12,5 +12,5 @@ interface Db {
     fun addTask(task: TodoTask)
 
     /** Returns all tasks from the database  */
-    val allTasks: Observable<Map<String, Map<*, *>>>
+    val getAllTasks: Observable<Map<String, Map<*, *>>>
 }

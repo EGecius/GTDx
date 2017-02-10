@@ -32,7 +32,7 @@ class ListActivityPresenterImplTest {
 
     private fun mockDb() {
         val hashMap = HashMap<String, Map<String, String>>()
-        given(db!!.allTasks).willReturn(Observable.just(hashMap))
+        given(db!!.getAllTasks).willReturn(Observable.just(hashMap))
     }
 
     @Test

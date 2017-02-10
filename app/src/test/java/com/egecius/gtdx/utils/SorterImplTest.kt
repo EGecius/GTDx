@@ -4,7 +4,6 @@ import com.egecius.gtdx.datatypes.TodoTask
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.InjectMocks
 import org.mockito.runners.MockitoJUnitRunner
 import java.util.*
 

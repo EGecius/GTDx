@@ -13,7 +13,7 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
     }
 
     private fun observeTasksInCloudDatabase() {
-        db.allTasks.subscribe { map ->
+        db.getAllTasks.subscribe { map ->
             view.hideProgressBar()
             updateTasks(map) }
     }

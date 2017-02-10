@@ -31,7 +31,7 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
         return UUID.randomUUID().toString()
     }
 
-    override val allTasks: Observable<Map<String, Map<*, *>>>
+    override val getAllTasks: Observable<Map<String, Map<*, *>>>
         get() = Observable.create { subscriber ->
             refTasks.addValueEventListener(object : ValueEventListener {
                 override fun onDataChange(dataSnapshot: DataSnapshot) {
