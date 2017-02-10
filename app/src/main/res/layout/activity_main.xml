@@ -18,21 +18,21 @@
         tools:context="com.egecius.gtdx.ui.ListActivity">
 
         <EditText
-            android:id="@+id/enter_task"
+            android:id="@+id/enterTask"
             android:layout_width="match_parent"
             android:layout_margin="16dp"
             android:hint="enter task"
             android:layout_height="wrap_content"/>
 
         <Button
-            android:id="@+id/add_task"
+            android:id="@+id/addTaskBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="14sp"
             android:text="Add"/>
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/task_list"
+            android:id="@+id/tasksRecyclerView"
             android:background="@android:color/holo_green_light"
             android:layout_width="match_parent"
             android:layout_height="match_parent"/>
@@ -40,7 +40,7 @@
     </LinearLayout>
 
     <ProgressBar
-        android:id="@+id/progress_bar"
+        android:id="@+id/progressBar"
         android:visibility="invisible"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"

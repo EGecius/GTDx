@@ -13,17 +13,18 @@ import com.egecius.gtdx.R
 import com.egecius.gtdx.datatypes.TodoTask
 import com.egecius.gtdx.db.DbImpl
 import com.google.firebase.database.FirebaseDatabase
+import com.jakewharton.rxbinding.view.RxView
 
 class ListActivity : AppCompatActivity(), ListActivityView {
 
-    private var enterTaskView: EditText? = null
-    private var recyclerView: RecyclerView? = null
-    private var adapter: RecyclerViewAdapter? = null
-    private var addBtn: Button? = null
-    private var progressBar: ProgressBar? = null
+    private val enterTaskView by lazy { findViewById(R.id.enterTask) as EditText }
+    private val tasksRecyclerView by lazy { findViewById(R.id.tasksRecyclerView) as RecyclerView }
+    private val addTaskBtn by lazy { findViewById(R.id.addTaskBtn) as Button }
+    private val progressBar by lazy { findViewById(R.id.progressBar) as ProgressBar }
+
+    private val adapter: RecyclerViewAdapter = RecyclerViewAdapter()
 
     private val presenter = ListActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,41 +34,32 @@ class ListActivity : AppCompatActivity(), ListActivityView {
     }
 
     override fun showProgressBar() {
-        progressBar!!.visibility = VISIBLE
+        progressBar.visibility = VISIBLE
     }
 
     override fun hideProgressBar() {
-        progressBar!!.visibility = INVISIBLE
+        progressBar.visibility = INVISIBLE
     }
 
     private fun setupUi() {
         setContentView(R.layout.activity_main)
-        findViews()
         setRecyclerView()
         setupAddButton()
     }
 
-    private fun findViews() {
-        enterTaskView = findViewById(R.id.enter_task) as EditText
-        addBtn = findViewById(R.id.add_task) as Button
-        recyclerView = findViewById(R.id.task_list) as RecyclerView
-        progressBar = findViewById(R.id.progress_bar) as ProgressBar
-    }
-
     private fun setRecyclerView() {
-        adapter = RecyclerViewAdapter()
-        recyclerView!!.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-        recyclerView!!.adapter = adapter
+        tasksRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+        tasksRecyclerView.adapter = adapter
     }
 
     private fun setupAddButton() {
-        addBtn!!.setOnClickListener {
-            val taskTitle = enterTaskView!!.text.toString()
+        RxView.clicks(addTaskBtn).subscribe {
+            val taskTitle = enterTaskView.text.toString()
             presenter.onNewTaskAdded(taskTitle)
         }
     }
 
     override fun onTasksUpdated(list: List<TodoTask>) {
-        adapter!!.updateList(list)
+        adapter.updateList(list)
     }
 }
