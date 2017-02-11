@@ -17,4 +17,7 @@ interface Db {
      * @param id id of the task to be removed
      */
     fun removeTask(id: String)
+
+    /** GEts list of Contexts */
+    fun getContexts(): Observable<List<String>>
 }

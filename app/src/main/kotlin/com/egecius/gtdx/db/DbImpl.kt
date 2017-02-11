@@ -28,6 +28,10 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
         refTasks.child(task.id).setValue(task)
     }
 
+    override fun getContexts(): Observable<List<String>> {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
     private fun createId(): String {
         return UUID.randomUUID().toString()
     }
