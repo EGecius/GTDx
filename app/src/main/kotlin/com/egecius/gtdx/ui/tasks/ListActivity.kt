@@ -1,4 +1,4 @@
-package com.egecius.gtdx.ui
+package com.egecius.gtdx.ui.tasks
 
 import android.content.Intent
 import android.os.Bundle
@@ -15,6 +15,7 @@ import android.widget.ProgressBar
 import com.egecius.gtdx.R
 import com.egecius.gtdx.datatypes.TodoTask
 import com.egecius.gtdx.db.DbImpl
+import com.egecius.gtdx.ui.contexts.ContextsActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.jakewharton.rxbinding.view.RxView
 

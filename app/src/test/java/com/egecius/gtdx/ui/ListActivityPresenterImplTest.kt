@@ -1,6 +1,8 @@
 package com.egecius.gtdx.ui
 
 import com.egecius.gtdx.db.Db
+import com.egecius.gtdx.ui.tasks.ListActivityPresenterImpl
+import com.egecius.gtdx.ui.tasks.ListActivityView
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test

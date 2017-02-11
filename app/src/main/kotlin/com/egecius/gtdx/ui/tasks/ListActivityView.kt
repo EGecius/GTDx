@@ -1,4 +1,4 @@
-package com.egecius.gtdx.ui
+package com.egecius.gtdx.ui.tasks
 
 import com.egecius.gtdx.datatypes.TodoTask
 
