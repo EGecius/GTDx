@@ -19,5 +19,9 @@ class ContextsActivity : AppCompatActivity(), ContextsActivityView {
 
         presenter.onCreate()
     }
+
+    override fun showContextList(list: List<String>) {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
 }
 

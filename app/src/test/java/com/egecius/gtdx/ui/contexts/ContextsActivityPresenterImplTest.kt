@@ -4,7 +4,6 @@ import com.egecius.gtdx.db.Db
 import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
-import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.verify
 import org.mockito.runners.MockitoJUnitRunner
@@ -30,7 +29,7 @@ class ContextsActivityPresenterImplTest {
         //WHEN
         presenter!!.onCreate()
         //THEN
-        verify(db)!!.getContexts()
+        verify(db)!!.getContextNames()
     }
 
 }

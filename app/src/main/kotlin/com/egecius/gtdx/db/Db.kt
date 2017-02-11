@@ -19,5 +19,5 @@ interface Db {
     fun removeTask(id: String)
 
     /** GEts list of Contexts */
-    fun getContexts(): Observable<List<String>>
+    fun getContextNames(): Observable<List<String>>
 }
