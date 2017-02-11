@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">GTDx</string>
+    <string name="context">Cotext</string>
 </resources>

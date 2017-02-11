@@ -1,6 +1,5 @@
 package com.egecius.gtdx.ui
 
-import android.util.Log
 import com.egecius.gtdx.datatypes.TodoTask
 import com.egecius.gtdx.db.Db
 import com.egecius.gtdx.utils.SorterImpl
@@ -17,18 +16,6 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
         db.getAllTasks.subscribe { map ->
             view.hideProgressBar()
             updateTasks(map) }
-    }
-
-    override fun onNewTaskAdded(taskTitle: String) {
-        addTaskToDb(taskTitle)
-    }
-
-    override fun onRemoveTaskClicked(id: String) {
-        db.removeTask(id)
-    }
-
-    private fun addTaskToDb(taskTitle: String) {
-        db.addTask(taskTitle)
     }
 
     private fun updateTasks(map: Map<String, Map<*, *>>) {
@@ -54,6 +41,22 @@ internal class ListActivityPresenterImpl(private val view: ListActivityView, val
         }
 
         return list
+    }
+
+    override fun onNewTaskAdded(taskTitle: String) {
+        addTaskToDb(taskTitle)
+    }
+
+    private fun addTaskToDb(taskTitle: String) {
+        db.addTask(taskTitle)
+    }
+
+    override fun onRemoveTaskClicked(id: String) {
+        db.removeTask(id)
+    }
+
+    override fun onContextBtnClicked() {
+        view.goToContextsActivity()
     }
 
 }

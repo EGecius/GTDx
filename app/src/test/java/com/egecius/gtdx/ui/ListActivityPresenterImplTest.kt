@@ -21,7 +21,7 @@ class ListActivityPresenterImplTest {
 
    internal var presenter: ListActivityPresenterImpl? = null
 
-    @Mock internal var view: ListActivityView? = null
+    @Mock internal val view: ListActivityView? = null
     @Mock internal var db: Db? = null
 
     @Before
@@ -36,14 +36,20 @@ class ListActivityPresenterImplTest {
     }
 
     @Test
-    fun when_onCreateCalledAndDbLoads_showsSpinner() {
+    fun when_onCreateCalledAndDbLoads_showsSpinnerWhileLoading_and_hidesOnceFinished() {
         //WHEN
        presenter!!.onCreate()
         //THEN
        verify(view!!).showProgressBar()
+       verify(view).hideProgressBar()
+    }
 
-       verify(view!!).hideProgressBar()
-
+    @Test
+    fun when_onContextBtnClicked_then_goesToListActivity() {
+        //WHEN
+        presenter!!.onContextBtnClicked()
+        //THEN
+        verify(view!!).goToContextsActivity()
     }
 
 }

@@ -12,4 +12,6 @@ internal interface ListActivityView {
 
     /** Hides progress indicator */
     fun hideProgressBar()
+
+    fun goToContextsActivity()
 }

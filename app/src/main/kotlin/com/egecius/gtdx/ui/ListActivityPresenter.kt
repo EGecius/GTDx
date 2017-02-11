@@ -12,4 +12,7 @@ internal interface ListActivityPresenter {
      */
     fun onRemoveTaskClicked(id: String)
 
+    /** User wants to to see list of contexts */
+    fun onContextBtnClicked()
+
 }
