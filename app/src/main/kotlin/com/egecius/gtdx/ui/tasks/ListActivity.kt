@@ -37,6 +37,25 @@ class ListActivity : AppCompatActivity(), ListActivityView {
         presenter.onCreate()
     }
 
+    private fun setupUi() {
+        setContentView(R.layout.activity_main)
+        setRecyclerView()
+        setupAddButton()
+    }
+
+    private fun setRecyclerView() {
+        adapter.setRemoveTaskCallback({ id -> presenter.onRemoveTaskClicked(id) })
+        tasksRecyclerView.adapter = adapter
+        tasksRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
+    }
+
+    private fun setupAddButton() {
+        RxView.clicks(addTaskBtn).subscribe {
+            val taskTitle = enterTaskView.text.toString()
+            presenter.onNewTaskAdded(taskTitle)
+        }
+    }
+
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         return super.onCreateOptionsMenu(menu)
@@ -60,25 +79,6 @@ class ListActivity : AppCompatActivity(), ListActivityView {
 
     override fun hideProgressBar() {
         progressBar.visibility = INVISIBLE
-    }
-
-    private fun setupUi() {
-        setContentView(R.layout.activity_main)
-        setRecyclerView()
-        setupAddButton()
-    }
-
-    private fun setRecyclerView() {
-        adapter.setRemoveTaskCallback({ id -> presenter.onRemoveTaskClicked(id) })
-        tasksRecyclerView.adapter = adapter
-        tasksRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
-    }
-
-    private fun setupAddButton() {
-        RxView.clicks(addTaskBtn).subscribe {
-            val taskTitle = enterTaskView.text.toString()
-            presenter.onNewTaskAdded(taskTitle)
-        }
     }
 
     override fun onTasksUpdated(list: List<TodoTask>) {

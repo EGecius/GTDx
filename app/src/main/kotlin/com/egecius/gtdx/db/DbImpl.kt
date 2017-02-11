@@ -1,15 +1,9 @@
 package com.egecius.gtdx.db
 
-import android.util.Log
 import com.egecius.gtdx.datatypes.TodoTask
-import com.google.firebase.database.DataSnapshot
-import com.google.firebase.database.DatabaseError
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.database.ValueEventListener
-
+import com.egecius.gtdx.ui.contexts.ContextItem
+import com.google.firebase.database.*
 import rx.Observable
-import rx.Subscriber
 import java.util.*
 
 /**
@@ -54,7 +48,7 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
     }
 
 
-    override fun getContextNames(): Observable<List<String>> {
+    override fun getContextNames(): Observable<List<ContextItem>> {
         return Observable.create { subscriber ->
 
             refContexts.addValueEventListener(object : ValueEventListener {
@@ -69,13 +63,22 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
         }
     }
 
-    private fun extractContexts(dataSnapshot: DataSnapshot): List<String>? {
+    private fun extractContexts(dataSnapshot: DataSnapshot): List<ContextItem> {
         val map = dataSnapshot.value as Map<String, Map<*, *>>
 
-        val list = ArrayList<String>()
+        val list = ArrayList<ContextItem>()
 
-        for ((key) in map) {
-            list.add(key)
+        for ((titleAsKey, contextMap) in map) {
+
+            val taskIds = ArrayList<String>()
+
+            val entriesIds = contextMap.entries.toList()
+
+            for ((taskIdAsKey) in entriesIds) {
+                taskIds.add(taskIdAsKey as String)
+            }
+
+            list.add(ContextItem(titleAsKey, taskIds))
         }
 
         return list

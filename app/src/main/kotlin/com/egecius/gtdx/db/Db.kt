@@ -1,5 +1,6 @@
 package com.egecius.gtdx.db
 
+import com.egecius.gtdx.ui.contexts.ContextItem
 import rx.Observable
 
 /**
@@ -19,5 +20,5 @@ interface Db {
     fun removeTask(id: String)
 
     /** GEts list of Contexts */
-    fun getContextNames(): Observable<List<String>>
+    fun getContextNames(): Observable<List<ContextItem>>
 }

@@ -13,16 +13,18 @@
         android:theme="@style/AppTheme">
         
         <activity android:name=".ui.tasks.ListActivity">
+        </activity>
+
+        <activity android:name=".ui.contexts.ContextsActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
 
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+
+
         </activity>
-        <activity android:name=".ui.Main2Activity">
-        </activity>
-        
-        <activity android:name=".ui.contexts.ContextsActivity"/>
         
     </application>
 
