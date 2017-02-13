@@ -5,7 +5,7 @@ import com.egecius.gtdx.shared.db.Db
 import com.egecius.gtdx.shared.utils.SorterImpl
 import java.util.*
 
-internal class ListActivityPresenterImpl(private val view: ListActivityView, val db: Db) : ListActivityPresenter {
+internal class TasksActivityPresenterImpl(private val view: TasksActivityView, val db: Db) : TasksActivityPresenter {
 
     override fun onCreate() {
         observeTasksInCloudDatabase()

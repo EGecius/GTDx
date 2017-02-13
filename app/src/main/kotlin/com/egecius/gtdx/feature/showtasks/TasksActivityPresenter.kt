@@ -1,6 +1,6 @@
 package com.egecius.gtdx.feature.showtasks
 
-internal interface ListActivityPresenter {
+internal interface TasksActivityPresenter {
 
     fun onCreate()
 

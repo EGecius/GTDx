@@ -19,7 +19,7 @@ import com.egecius.gtdx.feature.showcontexts.ContextsActivity
 import com.google.firebase.database.FirebaseDatabase
 import com.jakewharton.rxbinding.view.RxView
 
-class ListActivity : AppCompatActivity(), ListActivityView {
+class TasksActivity : AppCompatActivity(), TasksActivityView {
 
     private val enterTaskView by lazy { findViewById(R.id.enterTask) as EditText }
     private val tasksRecyclerView by lazy { findViewById(R.id.tasksRecyclerView) as RecyclerView }
@@ -28,7 +28,7 @@ class ListActivity : AppCompatActivity(), ListActivityView {
 
     private val adapter: TasksRecyclerAdapter = TasksRecyclerAdapter()
 
-    private val presenter: ListActivityPresenter = ListActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
+    private val presenter: TasksActivityPresenter = TasksActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

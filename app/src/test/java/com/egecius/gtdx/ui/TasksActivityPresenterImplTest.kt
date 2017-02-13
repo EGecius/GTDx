@@ -1,8 +1,8 @@
 package com.egecius.gtdx.ui
 
 import com.egecius.gtdx.shared.db.Db
-import com.egecius.gtdx.feature.showtasks.ListActivityPresenterImpl
-import com.egecius.gtdx.feature.showtasks.ListActivityView
+import com.egecius.gtdx.feature.showtasks.TasksActivityPresenterImpl
+import com.egecius.gtdx.feature.showtasks.TasksActivityView
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.Before
 import org.junit.Test
@@ -16,20 +16,20 @@ import java.util.*
 
 
 /**
- * Tests for [ListActivityPresenterImpl]
+ * Tests for [TasksActivityPresenterImpl]
  */
 @RunWith(MockitoJUnitRunner::class)
-class ListActivityPresenterImplTest {
+class TasksActivityPresenterImplTest {
 
-   internal var presenter: ListActivityPresenterImpl? = null
+   internal var presenter: TasksActivityPresenterImpl? = null
 
-    @Mock internal val view: ListActivityView? = null
+    @Mock internal val view: TasksActivityView? = null
     @Mock internal var db: Db? = null
 
     @Before
     fun setup() {
         mockDb()
-        presenter = ListActivityPresenterImpl(view!!, db!!)
+        presenter = TasksActivityPresenterImpl(view!!, db!!)
     }
 
     private fun mockDb() {

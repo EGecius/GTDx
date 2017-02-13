@@ -2,7 +2,7 @@ package com.egecius.gtdx.feature.showtasks
 
 import com.egecius.gtdx.datatypes.TodoTask
 
-internal interface ListActivityView {
+internal interface TasksActivityView {
 
     /** Tasks have been updated on the database  */
     fun onTasksUpdated(list: List<TodoTask>)
