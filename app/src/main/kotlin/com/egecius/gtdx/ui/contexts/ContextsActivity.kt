@@ -18,7 +18,7 @@ class ContextsActivity : AppCompatActivity(), ContextsActivityView {
     private val tasksRecyclerView by lazy { findViewById(R.id.tasksRecyclerView) as RecyclerView }
     private val progressBar by lazy { findViewById(R.id.progressBar) as ProgressBar }
 
-    private val adapter = ContextsRecyclerViewAdapter()
+    private val adapter = ContextsRecyclerAdapter()
 
     private val presenter : ContextsActivityPresenter = ContextsActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
 

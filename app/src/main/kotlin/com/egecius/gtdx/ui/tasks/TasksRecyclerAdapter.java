@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-final class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
+final class TasksRecyclerAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
 	/** Notifications to clients */
 	interface RemoveTaskCallback {

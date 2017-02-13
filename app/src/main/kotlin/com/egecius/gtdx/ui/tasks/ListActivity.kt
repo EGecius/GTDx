@@ -26,7 +26,7 @@ class ListActivity : AppCompatActivity(), ListActivityView {
     private val addTaskBtn by lazy { findViewById(R.id.addTaskBtn) as Button }
     private val progressBar by lazy { findViewById(R.id.progressBar) as ProgressBar }
 
-    private val adapter: RecyclerViewAdapter = RecyclerViewAdapter()
+    private val adapter: TasksRecyclerAdapter = TasksRecyclerAdapter()
 
     private val presenter: ListActivityPresenter = ListActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
 

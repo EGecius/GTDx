@@ -8,7 +8,7 @@ import android.widget.TextView
 import com.egecius.gtdx.R
 import java.util.*
 
-internal class ContextsRecyclerViewAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+internal class ContextsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private val list = ArrayList<ContextItem>()
 
