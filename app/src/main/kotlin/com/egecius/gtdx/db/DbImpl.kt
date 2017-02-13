@@ -1,7 +1,7 @@
 package com.egecius.gtdx.db
 
 import com.egecius.gtdx.datatypes.TodoTask
-import com.egecius.gtdx.ui.contexts.ContextItem
+import com.egecius.gtdx.datatypes.ContextItem
 import com.google.firebase.database.*
 import rx.Observable
 import java.util.*

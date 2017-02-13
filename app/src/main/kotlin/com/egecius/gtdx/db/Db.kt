@@ -1,6 +1,6 @@
 package com.egecius.gtdx.db
 
-import com.egecius.gtdx.ui.contexts.ContextItem
+import com.egecius.gtdx.datatypes.ContextItem
 import rx.Observable
 
 /**

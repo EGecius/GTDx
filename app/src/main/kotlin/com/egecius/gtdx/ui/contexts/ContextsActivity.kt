@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ProgressBar
 import com.egecius.gtdx.R
+import com.egecius.gtdx.datatypes.ContextItem
 import com.egecius.gtdx.db.DbImpl
 import com.google.firebase.database.FirebaseDatabase
 

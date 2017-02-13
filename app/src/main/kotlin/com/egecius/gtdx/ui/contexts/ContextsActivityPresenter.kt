@@ -1,6 +1,6 @@
 package com.egecius.gtdx.ui.contexts
 
-interface ContextsActivityPresenter {
+internal interface ContextsActivityPresenter {
     fun onCreate()
 
 }
