@@ -1,16 +1,21 @@
 package com.egecius.gtdx.feature.showcontexts
 
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
 import android.widget.ProgressBar
 import com.egecius.gtdx.R
 import com.egecius.gtdx.datatypes.ContextItem
 import com.egecius.gtdx.feature.showcontexts.ContextsRecyclerAdapter.Callback
+import com.egecius.gtdx.feature.showtasks.ListActivity
 import com.egecius.gtdx.shared.db.DbImpl
+import com.egecius.gtdx.shared.utils.IntentsCreator
 import com.google.firebase.database.FirebaseDatabase
+import java.util.*
 
 /**
  * Shows a list of contexts
@@ -30,6 +35,11 @@ class ContextsActivity : AppCompatActivity(), ContextsActivityView {
         setRecyclerView()
 
         presenter.onCreate()
+    }
+
+    override fun gotToTasksActivity(taskIds: List<String>) {
+        val intent = IntentsCreator().createForTasksActivity(this, taskIds)
+        startActivity(intent)
     }
 
     private fun setRecyclerView() {

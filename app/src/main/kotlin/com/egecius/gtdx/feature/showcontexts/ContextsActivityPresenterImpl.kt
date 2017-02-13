@@ -4,6 +4,7 @@ import com.egecius.gtdx.datatypes.ContextItem
 import com.egecius.gtdx.shared.db.Db
 
 internal class ContextsActivityPresenterImpl(val view: ContextsActivityView, val db: Db) : ContextsActivityPresenter {
+
     override fun onCreate() {
         view.showProgressBar()
         db.getContextNames().subscribe { list ->
@@ -13,7 +14,7 @@ internal class ContextsActivityPresenterImpl(val view: ContextsActivityView, val
     }
 
     override fun onContextClicked(item: ContextItem) {
-        // TODO: 13/02/2017
+       view.gotToTasksActivity(item.idsList)
     }
 
 }

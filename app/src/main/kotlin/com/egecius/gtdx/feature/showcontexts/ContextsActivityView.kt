@@ -6,5 +6,6 @@ import com.egecius.gtdx.datatypes.ContextItem
     fun showContextList(list: List<ContextItem>)
     fun hideProgressBar()
     fun showProgressBar()
+     fun gotToTasksActivity(taskIds: List<String>)
 
-}
+ }
