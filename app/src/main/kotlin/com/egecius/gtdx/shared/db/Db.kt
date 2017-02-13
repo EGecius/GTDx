@@ -1,4 +1,4 @@
-package com.egecius.gtdx.db
+package com.egecius.gtdx.shared.db
 
 import com.egecius.gtdx.datatypes.ContextItem
 import rx.Observable

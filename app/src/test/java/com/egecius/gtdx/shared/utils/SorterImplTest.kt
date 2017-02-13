@@ -1,4 +1,4 @@
-package com.egecius.gtdx.utils
+package com.egecius.gtdx.shared.utils
 
 import com.egecius.gtdx.datatypes.TodoTask
 import org.assertj.core.api.Assertions.assertThat

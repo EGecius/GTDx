@@ -1,4 +1,4 @@
-package com.egecius.gtdx.ui.tasks;
+package com.egecius.gtdx.feature.showtasks;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;

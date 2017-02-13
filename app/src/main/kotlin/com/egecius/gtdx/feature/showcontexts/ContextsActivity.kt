@@ -1,4 +1,4 @@
-package com.egecius.gtdx.ui.contexts
+package com.egecius.gtdx.feature.showcontexts
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.ProgressBar
 import com.egecius.gtdx.R
 import com.egecius.gtdx.datatypes.ContextItem
-import com.egecius.gtdx.db.DbImpl
+import com.egecius.gtdx.shared.db.DbImpl
 import com.google.firebase.database.FirebaseDatabase
 
 /**

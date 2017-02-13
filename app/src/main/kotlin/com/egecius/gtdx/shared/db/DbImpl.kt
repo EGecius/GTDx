@@ -1,4 +1,4 @@
-package com.egecius.gtdx.db
+package com.egecius.gtdx.shared.db
 
 import com.egecius.gtdx.datatypes.TodoTask
 import com.egecius.gtdx.datatypes.ContextItem

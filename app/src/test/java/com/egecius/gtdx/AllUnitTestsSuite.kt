@@ -1,8 +1,8 @@
 package com.egecius.gtdx
 
-import com.egecius.gtdx.db.DbImplTest
+import com.egecius.gtdx.shared.db.DbImplTest
 import com.egecius.gtdx.ui.ListActivityPresenterImplTest
-import com.egecius.gtdx.utils.SorterImplTest
+import com.egecius.gtdx.shared.utils.SorterImplTest
 
 import org.junit.runner.RunWith
 import org.junit.runners.Suite

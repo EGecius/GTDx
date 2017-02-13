@@ -1,8 +1,8 @@
-package com.egecius.gtdx.ui.contexts
+package com.egecius.gtdx.feature.showcontexts
 
 import com.egecius.gtdx.datatypes.ContextItem
 
-internal interface ContextsActivityView {
+ interface ContextsActivityView {
     fun showContextList(list: List<ContextItem>)
     fun hideProgressBar()
     fun showProgressBar()

@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         
-        <activity android:name=".ui.tasks.ListActivity">
+        <activity android:name=".feature.showtasks.ListActivity">
         </activity>
 
-        <activity android:name=".ui.contexts.ContextsActivity">
+        <activity android:name="com.egecius.gtdx.feature.showcontexts.ContextsActivity">
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

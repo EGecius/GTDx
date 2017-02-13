@@ -1,4 +1,4 @@
-package com.egecius.gtdx.db;
+package com.egecius.gtdx.shared.db;
 
 
 import com.egecius.gtdx.datatypes.TodoTask;
@@ -27,12 +27,15 @@ import static org.mockito.Mockito.verify;
 public class DbImplTest {
 
 	private static final String TASKS = "tasks";
+	private static final String CONTEXTS = "contexts";
+
 	private static final String TASK_TITLE_0 = "task_title_0";
 
 	@Mock FirebaseDatabase firebaseDb;
 	@Mock DatabaseReference refRoot;
 	@Mock DatabaseReference refTasks;
 	@Mock DatabaseReference refSingleTask;
+	@Mock DatabaseReference refContexts;
 
 	@Captor ArgumentCaptor<TodoTask> captor;
 
@@ -45,6 +48,7 @@ public class DbImplTest {
 	public void setup() {
 		given(firebaseDb.getReference()).willReturn(refRoot);
 		given(refRoot.child(TASKS)).willReturn(refTasks);
+		given(refRoot.child(CONTEXTS)).willReturn(refContexts);
 		given(refTasks.child(anyString())).willReturn(refSingleTask);
 
 		db = new DbImpl(firebaseDb);

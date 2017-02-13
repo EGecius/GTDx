@@ -1,4 +1,4 @@
-package com.egecius.gtdx.ui.contexts
+package com.egecius.gtdx.feature.showcontexts
 
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater

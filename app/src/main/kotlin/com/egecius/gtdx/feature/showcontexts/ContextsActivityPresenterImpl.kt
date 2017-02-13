@@ -1,6 +1,6 @@
-package com.egecius.gtdx.ui.contexts
+package com.egecius.gtdx.feature.showcontexts
 
-import com.egecius.gtdx.db.Db
+import com.egecius.gtdx.shared.db.Db
 
 internal class ContextsActivityPresenterImpl(val view: ContextsActivityView, val db: Db) : ContextsActivityPresenter {
 
