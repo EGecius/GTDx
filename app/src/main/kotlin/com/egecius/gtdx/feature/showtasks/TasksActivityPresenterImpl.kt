@@ -7,15 +7,26 @@ import java.util.*
 
 internal class TasksActivityPresenterImpl(private val view: TasksActivityView, val db: Db) : TasksActivityPresenter {
 
-    override fun onCreate() {
-        observeTasksInCloudDatabase()
+    override fun onCreate(requestedTaskIds: List<String>) {
+        if (isSpecificIdsRequested(requestedTaskIds)) {
+            observeSpecificTasksTasksInCloudDatabase(requestedTaskIds)
+        } else {
+            observeAllTasksTasksInCloudDatabase()
+        }
         view.showProgressBar()
     }
 
-    private fun observeTasksInCloudDatabase() {
+    private fun observeSpecificTasksTasksInCloudDatabase(ids: List<String>) {
+        db.getTasks(ids)
+    }
+
+    fun isSpecificIdsRequested(requestedTaskIds: List<String>) = !requestedTaskIds.isEmpty()
+
+    private fun observeAllTasksTasksInCloudDatabase() {
         db.getAllTasks.subscribe { map ->
             view.hideProgressBar()
-            updateTasks(map) }
+            updateTasks(map)
+        }
     }
 
     private fun updateTasks(map: Map<String, Map<*, *>>) {

@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View.INVISIBLE
@@ -16,6 +17,7 @@ import com.egecius.gtdx.R
 import com.egecius.gtdx.datatypes.TodoTask
 import com.egecius.gtdx.shared.db.DbImpl
 import com.egecius.gtdx.feature.showcontexts.ContextsActivity
+import com.egecius.gtdx.shared.utils.IntentsCreator
 import com.google.firebase.database.FirebaseDatabase
 import com.jakewharton.rxbinding.view.RxView
 
@@ -34,8 +36,11 @@ class TasksActivity : AppCompatActivity(), TasksActivityView {
         super.onCreate(savedInstanceState)
         setupUi()
 
-        presenter.onCreate()
+        presenter.onCreate(getTaskIds())
     }
+
+    /** Ids of tasks requested to be shown by another activity */
+    private fun getTaskIds() = intent.getStringArrayListExtra(IntentsCreator.KEY_TASK_IDS)
 
     private fun setupUi() {
         setContentView(R.layout.activity_main)

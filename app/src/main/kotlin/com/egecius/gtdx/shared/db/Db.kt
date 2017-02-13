@@ -1,6 +1,7 @@
 package com.egecius.gtdx.shared.db
 
 import com.egecius.gtdx.datatypes.ContextItem
+import com.egecius.gtdx.datatypes.TodoTask
 import rx.Observable
 
 /**
@@ -21,4 +22,6 @@ interface Db {
 
     /** GEts list of Contexts */
     fun getContextNames(): Observable<List<ContextItem>>
+
+    fun getTasks(idsOfTasks: List<String>) : Observable<List<TodoTask>>
 }

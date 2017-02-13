@@ -84,6 +84,11 @@ class DbImpl(firebaseDatabase: FirebaseDatabase) : Db {
         return list
     }
 
+    override fun getTasks(idsOfTasks: List<String>): Observable<List<TodoTask>> {
+        throw UnsupportedOperationException("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+
     companion object {
         private val TASKS = "tasks"
         private val CONTEXTS = "contexts"

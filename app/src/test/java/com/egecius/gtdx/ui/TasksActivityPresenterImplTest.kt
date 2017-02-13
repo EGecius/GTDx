@@ -23,6 +23,8 @@ class TasksActivityPresenterImplTest {
 
    internal var presenter: TasksActivityPresenterImpl? = null
 
+    private val idsOfTasksRequested = listOf("id_1", "id_2")
+
     @Mock internal val view: TasksActivityView? = null
     @Mock internal var db: Db? = null
 
@@ -38,9 +40,9 @@ class TasksActivityPresenterImplTest {
     }
 
     @Test
-    fun when_onCreateCalledAndDbLoads_showsSpinnerWhileLoading_and_hidesOnceFinished() {
+    fun when_onCreateCalledWithEmptyIdList_and_dbLoads_showsSpinnerWhileLoading_and_hidesOnceFinished() {
         //WHEN
-       presenter!!.onCreate()
+       presenter!!.onCreate(listOf())
         //THEN
        verify(view!!).showProgressBar()
        verify(view).hideProgressBar()
@@ -53,5 +55,14 @@ class TasksActivityPresenterImplTest {
         //THEN
         verify(view!!).goToContextsActivity()
     }
+
+    @Test
+    fun when_onCreateCalledWithIdList_then_db_requestedThatList() {
+        //WHEN
+        presenter!!.onCreate(idsOfTasksRequested)
+        //THEN
+        verify(db!!).getTasks(idsOfTasksRequested)
+    }
+
 
 }
