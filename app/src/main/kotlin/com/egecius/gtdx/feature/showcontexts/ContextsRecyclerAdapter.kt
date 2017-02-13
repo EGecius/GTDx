@@ -11,7 +11,12 @@ import java.util.*
 
 internal class ContextsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
+    interface Callback {
+        fun onContextClicked(item: ContextItem)
+    }
+
     private val list = ArrayList<ContextItem>()
+    var callback : Callback? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.context_list_item, parent, false)
@@ -20,6 +25,9 @@ internal class ContextsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewH
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is MyViewHolder) {
+
+            holder.taskRoot.setOnClickListener { callback?.onContextClicked(list[position]) }
+
             val titleText = list[position].title
             holder.title.text = titleText
         }
@@ -36,11 +44,8 @@ internal class ContextsRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewH
     }
 
     private inner class MyViewHolder internal constructor(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        internal var title: TextView
-
-        init {
-            title = itemView.findViewById(R.id.title) as TextView
-        }
+        val taskRoot: View = itemView.findViewById(R.id.taskRoot) as ViewGroup
+        val title: TextView = itemView.findViewById(R.id.title) as TextView
     }
 }
 

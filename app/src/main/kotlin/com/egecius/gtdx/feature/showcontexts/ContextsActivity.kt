@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.ProgressBar
 import com.egecius.gtdx.R
 import com.egecius.gtdx.datatypes.ContextItem
+import com.egecius.gtdx.feature.showcontexts.ContextsRecyclerAdapter.Callback
 import com.egecius.gtdx.shared.db.DbImpl
 import com.google.firebase.database.FirebaseDatabase
 
@@ -21,7 +22,7 @@ class ContextsActivity : AppCompatActivity(), ContextsActivityView {
 
     private val adapter = ContextsRecyclerAdapter()
 
-    private val presenter : ContextsActivityPresenter = ContextsActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
+    private val presenter: ContextsActivityPresenter = ContextsActivityPresenterImpl(this, DbImpl(FirebaseDatabase.getInstance()))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,9 +33,16 @@ class ContextsActivity : AppCompatActivity(), ContextsActivityView {
     }
 
     private fun setRecyclerView() {
+        adapter.callback = object : Callback {
+            override fun onContextClicked(item: ContextItem) {
+                presenter.onContextClicked(item)
+            }
+        }
+
         tasksRecyclerView.adapter = adapter
         tasksRecyclerView.layoutManager = LinearLayoutManager(applicationContext, LinearLayoutManager.VERTICAL, false)
     }
+
     override fun showContextList(list: List<ContextItem>) {
         adapter.updateList(list)
     }
