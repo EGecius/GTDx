@@ -86,7 +86,7 @@ class TasksActivity : AppCompatActivity(), TasksActivityView {
         progressBar.visibility = INVISIBLE
     }
 
-    override fun onTasksUpdated(list: List<TodoTask>) {
+    override fun showTasks(list: List<TodoTask>) {
         adapter.updateList(list)
     }
 }

@@ -17,7 +17,10 @@ internal class TasksActivityPresenterImpl(private val view: TasksActivityView, v
     }
 
     private fun observeSpecificTasksTasksInCloudDatabase(ids: List<String>) {
-        db.getTasks(ids)
+        db.getTasks(ids).subscribe { tasks ->
+            view.hideProgressBar()
+            view.showTasks(tasks)
+        }
     }
 
     fun isSpecificIdsRequested(requestedTaskIds: List<String>) = !requestedTaskIds.isEmpty()
@@ -32,7 +35,7 @@ internal class TasksActivityPresenterImpl(private val view: TasksActivityView, v
     private fun updateTasks(map: Map<String, Map<*, *>>) {
         val unsortedList = extractToTaskList(map)
         val sortedList = sortByMostRecent(unsortedList)
-        view.onTasksUpdated(sortedList)
+        view.showTasks(sortedList)
     }
 
     private fun sortByMostRecent(unsortedList: List<TodoTask>): List<TodoTask> {
